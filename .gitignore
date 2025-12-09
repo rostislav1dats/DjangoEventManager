@@ -1,0 +1,16 @@
+# idea stuff
+EMvenv/
+.vscode/
+.pylintrc
+
+# python stuff
+__init__.py
+__pycache__/
+.env
+
+# django stuff
+db.sqlite3
+migrations/
+
+# not needed now
+events/
