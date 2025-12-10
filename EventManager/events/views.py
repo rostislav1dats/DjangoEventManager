@@ -29,7 +29,7 @@ class EventViewSet(viewsets.ModelViewSet):
         # set organizer automaticaly
         event = serializer.save(organizer=self.request.user)
 
-        # call celery task
+        # call celery task to send email on organizer.email
         send_event_email(
             organizer_email=event.organizer.email,
             title=event.title,
