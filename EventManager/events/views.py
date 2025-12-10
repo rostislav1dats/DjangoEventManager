@@ -1,12 +1,19 @@
-# from django.shortcuts import render
 from rest_framework import viewsets, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
+from drf_spectacular.utils import extend_schema_view, extend_schema
 from .models import Event
 from .serializers import EventSerializer
 from .filters import EventFilter
 from .tasks import send_event_email
 
-
+@extend_schema_view(
+    list=extend_schema(description='Get list of all events'),
+    create=extend_schema(description='Create new event and get email'),
+    retrieve=extend_schema(description='Get datailed info about event by id'),
+    update=extend_schema(description='Fully update event by id'),
+    partial_update=extend_schema(description='Partially update the event by id'),
+    destroy=extend_schema(description='Delete event by id')
+)
 class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticated]
