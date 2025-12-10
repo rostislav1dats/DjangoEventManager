@@ -4,6 +4,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Event
 from .serializers import EventSerializer
 from .filters import EventFilter
+from .tasks import send_event_email
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -26,4 +27,12 @@ class EventViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         # set organizer automaticaly
-        serializer.save(organizer=self.request.user)
+        event = serializer.save(organizer=self.request.user)
+
+        # call celery task
+        send_event_email(
+            organizer_email=event.organizer.email,
+            title=event.title,
+            date=event.date.strftime('%Y-%m-%d %H:%M'),
+            location=event.location
+        )

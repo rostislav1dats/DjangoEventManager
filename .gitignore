@@ -5,6 +5,7 @@ EMvenv/
 
 # python stuff
 __init__.py
+!EventManager/EventManager/__init__.py
 __pycache__/
 .env
 
