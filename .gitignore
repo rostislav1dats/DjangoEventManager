@@ -11,6 +11,3 @@ __pycache__/
 # django stuff
 db.sqlite3
 migrations/
-
-# not needed now
-events/

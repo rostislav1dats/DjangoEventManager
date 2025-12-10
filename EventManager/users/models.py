@@ -71,10 +71,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         return full_name or self.email
     
     
-    # @property
-    # def events_count(self):
-    #     """
-    #     Return count of created user`s events
-    #     """
-    #     return self.events.count()
+    @property
+    def events_count(self):
+        """
+        Return count of created user`s events
+        """
+        return self.events.count()
     
