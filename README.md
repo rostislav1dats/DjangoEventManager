@@ -138,7 +138,7 @@ Request Bogy:
   "title": "Новое событие",
   "description": "Описание события",
   "date": "2025-12-20T18:00:00Z",
-  "location": "Москва"
+  "location": "Kyiv"
 }
 ```
 
