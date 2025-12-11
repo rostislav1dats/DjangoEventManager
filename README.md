@@ -31,10 +31,10 @@ cd <PROJECT_ROOT>
 # django stuff
 SECRET_KEY = <YOUR_DJANGO_SECRET_KEY>
 
-#email stuff
-EMAIL_HOST_USER = <YOUR_EMAIL_HOST_USER>\n
-EMAIL_HOST_PASSWORD = <YOUR_EMAIL_HOST_PASSWORD>\n
-DEFAULT_FROM_EMAIL = <YOUR_FROM_EMAIL>\n
+#email stuff  
+EMAIL_HOST_USER = <YOUR_EMAIL_HOST_USER>  
+EMAIL_HOST_PASSWORD = <YOUR_EMAIL_HOST_PASSWORD>  
+DEFAULT_FROM_EMAIL = <YOUR_FROM_EMAIL>  
 
 ### 3. Build Docker
 ```bash
@@ -73,66 +73,66 @@ docker compose logs -f celery-beat
 ____________________________
 ## API Documentation 
 Swagger UI:
-http://localhost:8000/api/docs/swagger/
+http://localhost:8000/api/docs/swagger/  
 Redoc UI:
 http://localhost:8000/api/docs/redoc/
 
 ## Authentification by JWT
-1. Get token (POST request)
-POST `apiuser/register/`
-Request body:
+1. Get token (POST request)  
+POST `apiuser/register/`  
+Request body:  
 ```json
 {
   "email": "user@example.com",
   "password": "password123"
 }
-```
-Response:
+```  
+Response:  
 ```json
 {
   "access": "<access_token>",
   "refresh": "<refresh_token>"
 }
-```
-2. Use Access token for authencificated requests
-header
-`Authorization: Bearer <access_token>`
-3. Refresh access token with refresh token
-POST `apiuser/token/refresh`
-Request body:
+```  
+2. Use Access token for authencificated requests  
+header  
+`Authorization: Bearer <access_token>`  
+3. Refresh access token with refresh token  
+POST `apiuser/token/refresh`  
+Request body:  
 ```json
 {
   "refresh": "<refresh_token>"
 }
-```
-Response:
-```json
+```  
+Response:  
+```json  
 {
   "access": "<access_token>",
   "refresh": "<refresh_token>"
 }
-```
+```  
 ## Manage events via API
-1. Get events list (only authentificated users)
-GET apievents/events/
-Authorization: Bearer <access_token>
+1. Get events list (only authentificated users)  
+GET apievents/events/  
+Authorization: Bearer <access_token>  
 
-Searching and filtering:
+Searching and filtering:  
 - by title `?search=conferation`
 - by location `?search=Kyiv`
 - filter by date `date_after=2025-12-01&date_before=2025-12-31`
-- possibility to combine parameters `/apievents/events/?search=Kyiv&date_after=2025-12-01&date_before=2025-12-31`
-Searching and filtering work via DRF filter and SearchFilter
+- possibility to combine parameters `/apievents/events/?search=Kyiv&date_after=2025-12-01&date_before=2025-12-31`  
+Searching and filtering work via DRF filter and SearchFilter  
 
 2. Get detailed info about event
-GET apievents/events/<id>/
-Authorization: Bearer <access_token>
+GET apievents/events/{id}/  
+Authorization: Bearer <access_token>  
 
-3. Create event
-POST apievents/events/
-Authorization: Bearer <access_token>
+3. Create event  
+POST apievents/events/  
+Authorization: Bearer <access_token>  
 
-Request Bogy:
+Request Bogy:  
 ```json
 {
   "title": "IT conferation",
@@ -140,20 +140,20 @@ Request Bogy:
   "date": "2025-12-20T18:00:00Z",
   "location": "Kyiv"
 }
-```
+```  
 
-4. Update event
-PUT /apievents/events/<id>/
-PATCH /apievents/events/<id>/
-Authorization: Bearer <access_token>
+4. Update event  
+PUT /apievents/events/{id}/  
+PATCH /apievents/events/{id}/  
+Authorization: Bearer <access_token>  
 
-5. Delete event
-DELETE /api/events/<id>/
-Authorization: Bearer <access_token>
+5. Delete event  
+DELETE /api/events/{id}/  
+Authorization: Bearer <access_token>  
 
-## Email notifications
-After creation event organizer receive email with title, date and location of created event
-Work via Celery + Redis
+## Email notifications  
+After creation event organizer receive email with title, date and location of created event  
+Work via Celery + Redis  
 
 ## Useful links
 - [Django](https://www.djangoproject.com)
