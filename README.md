@@ -124,7 +124,7 @@ Searching and filtering:
 - possibility to combine parameters `/apievents/events/?search=Kyiv&date_after=2025-12-01&date_before=2025-12-31`  
 Searching and filtering work via DRF filter and SearchFilter  
 
-2. Get detailed info about event
+2. Get detailed info about event  
 GET apievents/events/{id}/  
 Authorization: Bearer <access_token>  
 
