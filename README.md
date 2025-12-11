@@ -135,8 +135,8 @@ Authorization: Bearer <access_token>
 Request Bogy:
 ```json
 {
-  "title": "Новое событие",
-  "description": "Описание события",
+  "title": "IT conferation",
+  "description": "new IT technologies and AI",
   "date": "2025-12-20T18:00:00Z",
   "location": "Kyiv"
 }
